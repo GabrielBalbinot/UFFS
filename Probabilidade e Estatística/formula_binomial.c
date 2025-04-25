@@ -51,8 +51,8 @@ int main() {
         printf("Digite o valor de x: ");
         scanf("%d", &x);
 
-        printf("Digite o valor de p de forma percentual (sem o símbolo de %%): ");
-        scanf("%f", &p);
+        printf("Digite o valor de p de forma percentual (utilize vírgula como separador decimal): ");
+        scanf("%f%%", &p);
 
         p /= 100;
         q = 1 - p;
