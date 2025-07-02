@@ -18,6 +18,8 @@ int main(void) {
     double a, b, tamanhoDoIntervalo, areaTotal = 0;
     int n;
 
+    printf("Para este programa será utilizada a função y = (e^-x) + 2 por padrão\n\n");
+
     printf("Digite os valores de A e B separados por espaço: ");
     scanf("%lf %lf", &a, &b);
     printf("Digite o número de subintervalos: ");
@@ -35,7 +37,7 @@ int main(void) {
 
     }
 
-    printf("A aproximação da região plana no intervalo [%lf,%lf] é: %lf u.m.²\n", a, b, areaTotal);
+    printf("A aproximação da região plana no intervalo [%.10g,%.10g] é: %.2lf u.m.²\n", a, b, areaTotal);
 
     return 0;
 }
