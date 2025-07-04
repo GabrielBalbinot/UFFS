@@ -37,7 +37,11 @@ int main(void) {
 
     }
 
-    printf("A aproximação da região plana no intervalo [%.10g,%.10g] é: %.2lf u.m.²\n", a, b, areaTotal);
+    printf("\nA aproximação da região plana no intervalo [%.10g,%.10g] é: %.2lf u.m.²\n", a, b, areaTotal);
+
+    printf("\nPressione ENTER para encerrar o programa\n");
+    getchar();
+    getchar();
 
     return 0;
 }
