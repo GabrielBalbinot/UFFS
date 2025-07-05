@@ -23,7 +23,7 @@ typedef struct producao{
 
 typedef struct nodeSimples {
     
-   Producao producao;
+   Producao prod;
    struct nodeSimples *next;
     
 } Node;
@@ -33,7 +33,7 @@ typedef struct tipoFeno
   
    int fardos80;
    int fardos160;
-   int armazenagem;
+   long long int armazenagem;
    
 } Tipo;
 
@@ -66,6 +66,7 @@ void exclusao(ListaSimples *);
 void alterarProducao(ListaSimples *);
 void printProducao(Producao);
 void printAll(ListaSimples);
-int armazenagem(int, int);
+int armazenagemTotal(int, int);
+void atualizarSumario(ListaSimples *, Node *, int);
 
 #endif
