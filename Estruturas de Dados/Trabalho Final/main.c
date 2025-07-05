@@ -37,10 +37,46 @@ int main()
 
 char cultivares[4][20] = {"Coastcross", "Florakirk", "Jiggs", "Tifton 85"};
 
+int hash(char *cultivar) {
+
+    if (strcmp(cultivar, "Coastcross")) {
+
+        return 0;
+
+    } else if (strcmp(cultivar, "Florakirk")) {
+
+        return 1;
+
+    } else if (strcmp(cultivar, "Jiggs")) {
+
+        return 2;
+
+    } else if (strcmp(cultivar, "Tifton 85")) {
+
+        return 3;
+
+    }
+
+    return -1;
+
+}
+
 void initList(ListaSimples *lista) {
     
     lista->first = NULL;
     lista->last = NULL;
+    
+    for (int i = 0; i < 4; i++) {
+        
+        for (int j=0; j < 3; j++) {
+
+            lista->sumario[i].tipos[j].fardos80 = 0;
+            lista->sumario[i].tipos[j].fardos160 = 0;
+            lista->sumario[i].tipos[j].armazenagem = 0;
+
+        }
+
+    }
     
 }
 
@@ -85,6 +121,9 @@ void inclusao(ListaSimples *lista) {
         
         lista->first = node;
         lista->last = node;
+
+        // atualizarSumario(lista, );
+
         printf("Produção incluída com sucesso.\n\n");
         
         return;
@@ -168,7 +207,7 @@ void consultaPorData(ListaSimples *lista, int dia, int mes, int ano) {
         
         if (aux->producao.dataProducao.dia == dia && aux->producao.dataProducao.mes == mes && aux->producao.dataProducao.ano == ano) {
             
-            printf("%02d/%02d/%04d: %s - %c - %d\n", dia, mes, ano, aux->producao.tipoDeFardo.cultivar, aux->producao.tipoDeFardo.tipoDeFeno, aux->producao.qtDeFardos);
+            printf("%02d/%02d/%04d: %s - %c - %d fardos\n", dia, mes, ano, aux->producao.tipoDeFardo.cultivar, aux->producao.tipoDeFardo.tipoDeFeno, aux->producao.qtDeFardos);
             resultados++;
         }
         
@@ -325,4 +364,32 @@ void printAll(ListaSimples lista) {
         
     }
     
+}
+
+int armazenagemTotal(int qtDeFardos80, int qtDeFardos160) {
+
+    // retorna a área total em cm², que será tratado na hora de apresentar
+    // o dado ao cliente
+    return  80*80*(qtDeFardos80 / 3 + qtDeFardos80 % 3 > 0) + 160*160*(qtDeFardos160 / 3 + qtDeFardos160 % 3 > 0);
+
+}
+
+void atualizarSumario(ListaSimples *lista, Node *node, int acao) {
+
+
+    int cultivarIndex = hash(node->producao.tipoDeFardo.cultivar);
+    int tipoIndex = node->producao.tipoDeFardo.tipoDeFeno - 'A';
+    Tipo *sumarioPorTipo = &lista->sumario[cultivarIndex].tipos[tipoIndex];
+
+    if (node->producao.tipoDeFardo.diametro == 80) {
+
+        sumarioPorTipo->fardos80 += node->producao.qtDeFardos;
+
+    } else {
+        sumarioPorTipo->fardos160 += node->producao.qtDeFardos;
+    }
+
+    sumarioPorTipo->armazenagem = armazenagemTotal(sumarioPorTipo->fardos80, sumarioPorTipo->fardos160);
+
+
 }

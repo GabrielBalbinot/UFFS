@@ -23,21 +23,40 @@ typedef struct producao{
 
 typedef struct nodeSimples {
     
-    Producao producao;
-    struct nodeSimples *next;
+   Producao producao;
+   struct nodeSimples *next;
     
 } Node;
 
+typedef struct tipoFeno
+{ 
+  
+   int fardos80;
+   int fardos160;
+   int armazenagem;
+   
+} Tipo;
+
+
+typedef struct sumario {
+
+   Tipo tipos[3];
+
+} Sumario;
+
 typedef struct sentinelaLista {
     
-    Node *first;
-    Node *last;
+   Node *first;
+   Node *last;
+
+   Sumario sumario[4];   
     
 } ListaSimples;
 
 extern char *cultivarares[4];
 
 void initList(ListaSimples *);
+int hash(char *cultivar);
 Node *allocNode();
 void inclusao(ListaSimples *);
 void consulta(ListaSimples *);
@@ -47,5 +66,6 @@ void exclusao(ListaSimples *);
 void alterarProducao(ListaSimples *);
 void printProducao(Producao);
 void printAll(ListaSimples);
+int armazenagem(int, int);
 
 #endif
