@@ -189,7 +189,7 @@ void consulta(ListaSimples *lista) {
         int dia, mes, ano;
         printf("\tDigite a data a ser consultada (DD/MM/AAAA): ");
         scanf("%d/%d/%d", &dia, &mes, &ano);
-        
+        printf("\n");
         consultaPorData(lista, dia, mes, ano);
         
     } else if (tipoDeConsulta == 2) {
@@ -197,7 +197,7 @@ void consulta(ListaSimples *lista) {
         int cultivarId;
         printf("Selecione a cultivar:\n\t1. Coastcross\n\t2. Florakirk\n\t3. Jiggs\n\t4. Tifton 85\n\t");
         scanf("%d", &cultivarId);
-        
+        printf("\n");
         consultaPorCultivar(lista, cultivares[cultivarId-1]);
         
     } else {
@@ -353,7 +353,7 @@ void alterarProducao(ListaSimples *lista) {
                 scanf("%c", &aux->prod.tipoDeFardo.tipoDeFeno);
                 printf("\tTipo de feno alterado com sucesso.\n\n");
             } else if (tipoDeAlteracao == 4) {
-                printf("\tDigite o diâmetro do feno em centímetros: ");
+                printf("\tDigite o diâmetro do feno em centímetros (apenas 80cm ou 160cm): ");
                 scanf("%d", &aux->prod.tipoDeFardo.diametro);
                 printf("\tDiâmetro do feno alterado com sucesso.\n\n");
             } else if (tipoDeAlteracao == 5) {
