@@ -70,7 +70,7 @@
     </comp>
     <comp lib="5" loc="(80,660)" name="DipSwitch"/>
     <comp loc="(1190,480)" name="Latch"/>
-    <comp loc="(350,150)" name="Decodificador"/>
+    <comp loc="(350,150)" name="Codificador"/>
     <comp loc="(700,300)" name="Comparador"/>
     <comp loc="(700,500)" name="Comparador"/>
     <wire from="(100,340)" to="(100,660)"/>
@@ -525,9 +525,9 @@
     <wire from="(380,210)" to="(390,210)"/>
     <wire from="(420,210)" to="(470,210)"/>
   </circuit>
-  <circuit name="Decodificador">
+  <circuit name="Codificador">
     <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="Decodificador"/>
+    <a name="circuit" val="Codificador"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(170,70)" name="Pin">
