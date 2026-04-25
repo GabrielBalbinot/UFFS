@@ -1,43 +1,54 @@
 public class Agenda {
-   Pessoa[] pessoas = new Pessoa[15];
-   int qtdPessoas = 0;
+    private Pessoa[] pessoas = new Pessoa[15];
+    private int qtdPessoas = 0;
 
-   Agenda() {
-   }
+    public Agenda() {
 
-   void cadastrarPessoa(Pessoa var1) {
-      if (this.qtdPessoas == this.pessoas.length) {
-         System.out.println("A agenda está cheia!");
-      } else {
-         this.pessoas[this.qtdPessoas] = var1;
-         ++this.qtdPessoas;
-      }
-   }
+    }
 
-   void listarPessoas() {
-      Pessoa[] var1 = this.pessoas;
-      int var2 = var1.length;
+    Pessoa getPessoa(int indice) {
 
-      for(int var3 = 0; var3 < var2; ++var3) {
-         Pessoa var4 = var1[var3];
-         if (var4 != null) {
-            var4.imprimir();
-         }
-      }
+        if (pessoas[indice] == null) {
+            System.out.println("Pessoa inexistente");
+            return null;
+        }
 
-   }
+        return pessoas[indice];
 
-   boolean buscarPessoaPeloNome(String var1) {
-      Pessoa[] var2 = this.pessoas;
-      int var3 = var2.length;
+    }
 
-      for(int var4 = 0; var4 < var3; ++var4) {
-         Pessoa var5 = var2[var4];
-         if (var5 != null && var5.nome.equals(var1)) {
-            return true;
-         }
-      }
+    void cadastraPessoa(Pessoa p) {
+        if (qtdPessoas >= pessoas.length) {
+            System.out.println("Número máximo de pessoas cadastradas já " +
+                "atingido!");
+            return;
+        }
 
-      return false;
-   }
+        pessoas[qtdPessoas] = p;
+        qtdPessoas++;
+    }
+
+    void listaPessoas() {
+        System.out.println("A agenda tem " + qtdPessoas + " pessoa(s):");
+        for (int i = 0; i < qtdPessoas; i++){
+            System.out.println("Pessoa " + (i + 1) + ":");
+            System.out.println("--------------------");
+            pessoas[i].imprime();
+            System.out.println("--------------------");
+        }
+    }
+
+    boolean buscaPessoa(String nome){
+        for (int i = 0; i < qtdPessoas; i++) {
+            if (pessoas[i].getNome().equals(nome)) {
+                System.out.println(nome + " encontrado(a)!");
+                System.out.println("--------------------");
+                pessoas[i].imprime();
+                System.out.println("--------------------");
+                return true;
+            }
+        }
+        System.out.println(nome + " não encontrado(a)!");
+        return false;
+    }
 }

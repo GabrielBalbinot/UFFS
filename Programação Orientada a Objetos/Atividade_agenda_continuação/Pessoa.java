@@ -1,40 +1,63 @@
 public class Pessoa {
-   String nome;
-   Data dataNascimento;
-   Contato[] contatos = new Contato[4];
-   int qtdContatos = 0;
+   private String nome;
+   private Data dataNasc;
+   private Contato[] contatos = new Contato[4];
+   private int qtdContatos = 0;
 
-   Pessoa(String var1, Data var2) {
-      this.nome = var1;
-      this.dataNascimento = var2;
+   public Pessoa(String nome, Data dataNasc) {
+      this.nome = nome;
+      this.dataNasc = dataNasc;
    }
 
-   void cadastrarContato(Contato var1) {
-      if (this.qtdContatos == this.contatos.length) {
-         System.out.println("Lista de contatos cheia!");
-      } else {
-         this.contatos[this.qtdContatos] = var1;
-         ++this.qtdContatos;
+   String getNome() {
+      return this.nome;
+   }
+
+   void setNome(String nome) {
+      this.nome = nome;
+   }
+
+   Data getData() {
+      return this.dataNasc;
+   }
+
+   void setData(Data data) {
+      this.dataNasc = data;
+   }
+
+   Contato getContato(int indice) {
+
+      if (contatos[indice] == null) {
+         System.out.println("Contato inexistente!");
+         return null;
+      }
+
+      return contatos[indice];
+   }
+
+   void cadastraContato(Contato c) {
+      if (qtdContatos >= contatos.length) {
+         System.out.println("Número máximo de contatos cadastrados já " +
+               "atingido!");
+         return;
+      }
+
+      contatos[qtdContatos] = c;
+      qtdContatos++;
+   }
+
+   void listaContatos() {
+      System.out.println(qtdContatos + " contato(s):");
+      for (int i = 0; i < qtdContatos; i++) {
+         System.out.println("Contato " + (i + 1) + ":");
+         contatos[i].imprime();
       }
    }
 
-   void listarContatos() {
-      Contato[] var1 = this.contatos;
-      int var2 = var1.length;
-
-      for(int var3 = 0; var3 < var2; ++var3) {
-         Contato var4 = var1[var3];
-         if (var4 != null) {
-            var4.imprimir();
-         }
-      }
-
-   }
-
-   void imprimir() {
+   void imprime() {
       System.out.println("Nome: " + this.nome);
-      System.out.print("Data de nascimento: ");
-      this.dataNascimento.imprimir();
-      this.listarContatos();
+      System.out.println("Data de Nascimento:");
+      this.dataNasc.imprime();
+      this.listaContatos();
    }
 }

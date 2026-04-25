@@ -1,30 +1,45 @@
 public class Contato {
-   String numero;
-   boolean whatsapp;
-   boolean telegram;
-   static int qtdTotalContatos = 0;
+    private boolean ehTelegram;
+    private boolean ehWhatsapp;
+    private String numero;
 
-   static void imprimeQtdTotalContatos() {
-      System.out.println("Quantidade total de contatos: " + qtdTotalContatos);
-   }
+    public Contato(boolean t, boolean w, String numero) {
+        this.ehTelegram = t;
+        this.ehWhatsapp = w;
+        this.numero = numero;
+    }
 
-   Contato(String var1, boolean var2, boolean var3) {
-      this.numero = var1;
-      this.whatsapp = var2;
-      this.telegram = var3;
-      ++qtdTotalContatos;
-   }
+    boolean getTelegram() {
+        return ehTelegram;
+    }
 
-   void imprimir() {
-      if (this.whatsapp && this.telegram) {
-         System.out.println("Telegram && WhatsApp: " + this.numero);
-      } else if (this.whatsapp) {
-         System.out.println("WhatsApp: " + this.numero);
-      } else if (this.telegram) {
-         System.out.println("Telegram: " + this.numero);
-      } else {
-         System.out.println("Número:" + this.numero);
-      }
+    void setTelegram(boolean b) {
+        ehTelegram = b;
+    }
 
-   }
+    boolean getWhatsapp() {
+        return ehWhatsapp;
+    }
+
+    void setWhastapp(boolean b) {
+        ehWhatsapp = b;
+    }
+
+    String getNumero() {
+        return numero;
+    }
+
+    void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    void imprime() {
+        System.out.println("Número: " + this.numero);
+        if (this.ehTelegram){
+            System.out.println("É telegram!");
+        }
+        if (this.ehWhatsapp){
+            System.out.println("É whatsapp!");
+        }
+    }
 }

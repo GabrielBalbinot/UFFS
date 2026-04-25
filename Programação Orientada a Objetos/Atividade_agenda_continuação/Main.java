@@ -1,25 +1,29 @@
-public class Main
-{
-	public static void main(String[] args) {
-
-        Agenda agenda = new Agenda();
-	    
-		Data d1 = new Data(29,8,2001);	    
-	    Contato c1 = new Contato("49 98412-7301", true, true);				
-		Pessoa p1 = new Pessoa("Gabriel Francisco Dall Rosa Balbinot", d1);
-		p1.cadastrarContato(c1);
-			
-		agenda.cadastrarPessoa(p1);
-		
-		System.out.println(agenda.buscarPessoaPeloNome("Gabriel Francisco Dall Rosa Balbinot"));
+public class Main {
+    public static void main(String[] args) {
         
-        Data d2 = new Data();	    
-	    Contato c2 = new Contato("49 99908-7700", true, false);			
-		Pessoa p2 = new Pessoa("Ciclano Beltrano", d2);
-		p2.cadastrarContato(c2);      		
-		agenda.cadastrarPessoa(p2); 
+        Agenda agenda = new Agenda();
 
-        Contato.imprimeQtdTotalContatos();
+        Pessoa p = new Pessoa("Gabriel Balbinot", new Data());
+        agenda.cadastraPessoa(p);
+        p.imprime();
 
-	}
+        p.getData().setDia(29);
+        p.getData().setMes(8);
+        p.getData().setAno(2001);
+
+        p.cadastraContato(new Contato(false, false, ""));
+        
+        int indice = 0;
+
+        Contato temp = p.getContato(indice);
+
+        if (temp != null) {
+
+            temp.setNumero("49 98412-7301");
+
+        }
+        
+        agenda.listaPessoas();
+        
+    }
 }
