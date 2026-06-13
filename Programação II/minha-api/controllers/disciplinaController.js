@@ -1,4 +1,4 @@
-const DisciplinaModel = require("../models/disciplinaModel");
+    const DisciplinaModel = require("../trash/disciplinaModel");
 
 function listar(req, res) {
     const disciplina = DisciplinaModel.listarTodos(req.query);
